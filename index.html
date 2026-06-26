@@ -530,15 +530,12 @@
     }
 
     /* ===== 反転モード ===== */
-    body.flipped #text-area {
-      transform: rotate(180deg);
-    }
     #btn-flip.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #1a1a1a;
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #1a1a1a !important;
     }
-    /* 反転中はコントロール上部に帯を表示 */
+    /* 反転中バナー */
     #flip-banner {
       display: none;
       background: var(--accent);
@@ -548,8 +545,8 @@
       font-weight: 700;
       padding: 6px;
       flex-shrink: 0;
+      letter-spacing: 0.05em;
     }
-    body.flipped #flip-banner { display: block; }
 
     /* ===== スクロールトップボタン ===== */
     #scroll-bottom {
@@ -1022,6 +1019,11 @@ document.getElementById('btn-close-banner').addEventListener('click', () => {
 });
 
 // iOS: 手動ガイド
+document.getElementById('btn-flip').addEventListener('click', () => {
+  document.body.classList.toggle('flipped');
+  document.getElementById('btn-flip').classList.toggle('active');
+});
+
 document.getElementById('btn-install-ios').addEventListener('click', () => {
   if (isInStandaloneMode) {
     showError('✅ すでにホーム画面に追加済みです', true);
