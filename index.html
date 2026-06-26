@@ -529,6 +529,28 @@
       50% { transform: scaleY(1); }
     }
 
+    /* ===== 反転モード ===== */
+    body.flipped #text-area {
+      transform: rotate(180deg);
+    }
+    #btn-flip.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #1a1a1a;
+    }
+    /* 反転中はコントロール上部に帯を表示 */
+    #flip-banner {
+      display: none;
+      background: var(--accent);
+      color: #1a1a1a;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+    body.flipped #flip-banner { display: block; }
+
     /* ===== スクロールトップボタン ===== */
     #scroll-bottom {
       position: absolute;
@@ -593,6 +615,9 @@
     <button id="scroll-bottom">↓</button>
   </div>
 
+  <!-- 反転中バナー -->
+  <div id="flip-banner">🔄 反転表示中 ─ 相手に画面を向けてください</div>
+
   <!-- 下部コントロール -->
   <div id="controls">
     <!-- 通常モード -->
@@ -615,6 +640,10 @@
         <button class="btn-sub" id="btn-share">
           <span class="icon">📤</span>
           <span class="label">共有</span>
+        </button>
+        <button class="btn-sub" id="btn-flip">
+          <span class="icon">🔄</span>
+          <span class="label">反転</span>
         </button>
         <button class="btn-sub" id="btn-install-ios">
           <span class="icon">📱</span>
